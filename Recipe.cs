@@ -14,8 +14,10 @@ namespace ST10026525.POE.PART1
             public string Name { get; set; }
             public double Quantity { get; set; }
             public string Unit { get; set; }
-            public string Description { get; set; }
-
+        }
+        public class stepsforRecipe
+        {
+           public string Description { get; set; }
         }
        
     }
