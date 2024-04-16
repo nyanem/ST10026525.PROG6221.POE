@@ -21,12 +21,14 @@ namespace ST10026525.POE.PART1
             {
                 //creating a menue where user can choose what they wish to do with their reciper
                 bool scaled = false;
+                double orginalFactor = 1.0;
                 while (true)
                 {
                     Console.WriteLine("Recipe Options:");
                     Console.WriteLine("1. Display Recipe");
                     Console.WriteLine("2. Scale Recipe");
-                    Console.WriteLine("3. Exit");
+                    Console.WriteLine("3. Reset Ingredients");
+                    Console.WriteLine("4. Exit");
 
                     Console.WriteLine("Choose number: ");
                     string choice = Console.ReadLine();
@@ -43,6 +45,7 @@ namespace ST10026525.POE.PART1
                                 double factor;
                                 if (double.TryParse(Console.ReadLine(), out factor))
                                 {
+                                    orginalFactor = factor;
                                     recipe.scaleCalculator(factor);
                                     Console.WriteLine("Here are your new measurements!");
                                     scaled = true;
@@ -58,16 +61,24 @@ namespace ST10026525.POE.PART1
                             }
                             break;
                         case "3":
-                            Console.WriteLine("Goodbye :)");
+                            if (scaled)
+                            {
+                                recipe.scaleCalculator(1.0 / orginalFactor);
+                                Console.WriteLine("Quantities have been reset.");
+                                scaled = false;
+                            }
+                            else { 
+                            Console.WriteLine("Recipe is in its orginal form.");
+                            }
+                            break;
+                            case "4": Console.WriteLine("Goodbye");
                             return;
-                        default:
-                            Console.WriteLine("Invalid choice. Please eneter a number from 1 to 3");
+                        default: Console.WriteLine("Invalid input");
                             break;
                     }
-                }
 
-            }
-            else { Console.WriteLine("Failed :("); }
+                }
+            } else { Console.WriteLine("Falied please retry"); }
            
             Console.ReadKey();
         }
