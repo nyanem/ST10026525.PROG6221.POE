@@ -18,7 +18,7 @@ namespace ST10026525.POE.PART1
         {
             ingredientName = name;
             Quantity = quantity;
-            Unit = unit;
+            Unit = unit; 
         }     
     }
 }

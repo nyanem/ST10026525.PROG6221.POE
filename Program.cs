@@ -12,75 +12,104 @@ namespace ST10026525.POE.PART1
 {
     internal class Program
     {
-     
+
         static void Main(string[] args)
         {
             //Object calls for recipe to be displayed 
-            recipeClass recipe = RecipeBook.CreateNew();
-            if (recipe != null)
+            recipeClass recipe = null;
+
+
+            //creating a menue where user can choose what they wish to do with their reciper
+            bool scaled = false;
+            double orginalFactor = 1.0;
+            while (true)
             {
-                //creating a menue where user can choose what they wish to do with their reciper
-                bool scaled = false;
-                double orginalFactor = 1.0;
-                while (true)
+                Console.WriteLine("Recipe Options:");
+                Console.WriteLine("1. Enter new Recipe");
+                Console.WriteLine("2. Display Recipe");
+                Console.WriteLine("3. Scale Recipe");
+                Console.WriteLine("4. Reset Ingredients");
+                Console.WriteLine("5. Clear All Data");
+                Console.WriteLine("6. Exit");
+
+                Console.WriteLine("Welcome to Sanele's Recipe book, what would you like to do?: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
                 {
-                    Console.WriteLine("Recipe Options:");
-                    Console.WriteLine("1. Display Recipe");
-                    Console.WriteLine("2. Scale Recipe");
-                    Console.WriteLine("3. Reset Ingredients");
-                    Console.WriteLine("4. Exit");
-
-                    Console.WriteLine("Choose number: ");
-                    string choice = Console.ReadLine();
-
-                    switch (choice)
-                    {
-                        case "1":
+                    case "1": //Enter new data 
+                        recipe = RecipeBook.CreateNew();
+                        scaled = false; //this is going to reset the scaled data 
+                        break;
+                    case "2":
+                        if (recipe != null)
+                        {
                             recipe.displayRecipe();
-                            break;
-                        case "2":
+                        }
+                        else
+                        {
+                            Console.WriteLine("Enter new recipe");
+                        } break;
+
+                    case "3":
+                        if (recipe != null)
+                        {
                             if (!scaled)
                             {
-                                Console.WriteLine("Would you like your recipe to be halfed(X0.5), doubled (x2) or tripled (x3): ");
+                                Console.WriteLine("Would you like to half (x0.5), double (x2) or triple your recipe (x3): ");
                                 double factor;
                                 if (double.TryParse(Console.ReadLine(), out factor))
                                 {
                                     orginalFactor = factor;
                                     recipe.scaleCalculator(factor);
-                                    Console.WriteLine("Here are your new measurements!");
+                                    Console.WriteLine("Recipe scaled successfully");
                                     scaled = true;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Error please try again");
+                                    Console.WriteLine("INVALID!");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Complete :)");
+                                Console.WriteLine("Done!");
                             }
-                            break;
-                        case "3":
-                            if (scaled)
-                            {
-                                recipe.scaleCalculator(1.0 / orginalFactor);
-                                Console.WriteLine("Quantities have been reset.");
-                                scaled = false;
-                            }
-                            else { 
-                            Console.WriteLine("Recipe is in its orginal form.");
-                            }
-                            break;
-                            case "4": Console.WriteLine("Goodbye");
-                            return;
-                        default: Console.WriteLine("Invalid input");
-                            break;
-                    }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Enter a recipe");
+                        }
 
+                        break;
+                    case "4":
+                        if (scaled)
+                        {
+                            recipe.scaleCalculator(1.0 / orginalFactor);
+                            Console.WriteLine("Quantities reset to original values");
+                            scaled = false;
+                        }
+                        else 
+                        { 
+                            Console.WriteLine("Already done!");
+                        }
+                        break;
+                        case "5":
+                        recipe = null;
+                        scaled = false;
+                        Console.WriteLine("All data has been cleared");
+                        break;
+                        case "6":
+                        Console.WriteLine("Goodbye ");
+                        return;
+                        default:
+                        Console.WriteLine("Enter a number from the menu");
+                        break;
                 }
-            } else { Console.WriteLine("Falied please retry"); }
-           
+
+            }
             Console.ReadKey();
-        }
+        } 
+       
     }
+  
 }
