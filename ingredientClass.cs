@@ -10,13 +10,13 @@ namespace ST10026525.POE.PART1
     {
        
             //Declaring Variebles
-            public string Name { get; set; }
+            public string ingredientName { get; set; }
             public double Quantity { get; set; }
             public string Unit { get; set; }
 
         public ingredientClass(string name, double quantity, string unit)
         {
-            Name = name;
+            ingredientName = name;
             Quantity = quantity;
             Unit = unit;
         }     

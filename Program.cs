@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static ST10026525.POE.PART1.ingredientClass;
+using static ST10026525.POE.PART1.recipeClass;
 
 
 namespace ST10026525.POE.PART1
@@ -16,7 +17,12 @@ namespace ST10026525.POE.PART1
         {
             //Object calls for recipe to be displayed 
             recipeClass recipe = RecipeBook.CreateNew();
-            recipe.displayRecipe();
+            if (recipe != null )
+            {
+                recipe.displayRecipe();
+            } else { Console.WriteLine("Failed to create Recipe.") ; }
+           
+            Console.ReadKey();
         }
     }
 }
