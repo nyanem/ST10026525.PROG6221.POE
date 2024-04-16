@@ -46,6 +46,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ingredientClass.cs" />
+    <Compile Include="RecipeBook.cs" />
     <Compile Include="recipeClass.cs" />
   </ItemGroup>
   <ItemGroup>

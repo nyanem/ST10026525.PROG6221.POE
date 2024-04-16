@@ -14,30 +14,17 @@ namespace ST10026525.POE.PART1
      
         static void Main(string[] args)
         {
-            recipeClass recipeClass = new recipeClass();
-           // recipeClass.displayRecipe();
+            //Object calls for recipe to be displayed 
+            recipeClass recipe = RecipeBook.CreateNew();
+            recipe.displayRecipe();
+
+           
 
             List<recipeClass> recipes = new List<recipeClass>();
            // List<stepsforRecipe> steps = new List<stepsforRecipe>();
 
             
-            Console.WriteLine("How many Ingriedents does this Receipe need?:");
-            int numIngredients = int.Parse(Console.ReadLine());
-            for (int i = 0; i < numIngredients; i++)
-            {
-                Console.WriteLine($"Enter the name of the Ingredient and the Quantity you will need ({i+ 1}):");
-                recipeClass details = new recipeClass();
-                Console.WriteLine("Name:");
-                details.Name = Console.ReadLine();
-
-                Console.WriteLine("Quantity: ");
-                details.Quantity = double.Parse(Console.ReadLine());
-
-                Console.WriteLine("Unit:");
-                details.Unit = Console.ReadLine();
-
-                recipes.Add(details);
-            }
+           
             Console.WriteLine("Enter the number of Steps: ");
             int numSteps = int.Parse(Console.ReadLine());
 
