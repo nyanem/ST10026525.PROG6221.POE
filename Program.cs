@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using static ST10026525.POE.PART1.Recipe;
+using static ST10026525.POE.PART1.ingredientClass;
 
 
 namespace ST10026525.POE.PART1
@@ -14,8 +14,11 @@ namespace ST10026525.POE.PART1
      
         static void Main(string[] args)
         {
+            recipeClass recipeClass = new recipeClass();
+           // recipeClass.displayRecipe();
+
             List<recipeClass> recipes = new List<recipeClass>();
-            List<stepsforRecipe> steps = new List<stepsforRecipe>();
+           // List<stepsforRecipe> steps = new List<stepsforRecipe>();
 
             
             Console.WriteLine("How many Ingriedents does this Receipe need?:");
@@ -55,7 +58,44 @@ namespace ST10026525.POE.PART1
             Console.WriteLine("Steps:");
             for (int i = 0; < steps.Count; i++) {
                 Console.WriteLine($"\tStep {i + 1}: {steps[i].Description}");
-            }    
+            }
+
+            //Function to scale Recipe 
+            List<recipeClass> ScaleRecipe (List < recipeClass >
+            orginalIngredients, double scalingFactor)
+          { 
+                List<recipeClass> scaledIngredients = new List<recipeClass>();
+
+                foreach (var originalIngredient in orginalIngredients)
+                {
+                    recipeClass scaledRecipe = new recipeClass();
+                    { 
+                       Name = orginalIngredients.Name,
+                       Quantity = orginalIngredients.Quantity * scalingFactor, 
+                       Unit = originalIngredient.Unit
+                    };
+                    scaledIngredients.Add(scaledRecipe);
+                }
+            
+          }
+            //Function to reset the quantityies to the orginal values
+            List <recipeClass> resetQuantities ( List<recipeClass> scaledIngredients, List <recipeClass> originalIngredients) { 
+            for (int i = 0; i < scaledIngredients.Count; i++)
+                {
+                    scaledIngredients[i].Quantity = originalIngredients[i].Quantity;
+                }
+                return scaledIngredients;
+            }
+            Console.WriteLine("Would you like to reset the quantities to the orginal values? (Y/N)");
+            string resetInput = Console.ReadLine();
+            if (resetInput.ToLower() == "y") 
+            {
+                //Reset Values to quantities to the original values
+                scaledIngredients = resetQuantities(scaledIngredients, recipes);
+
+                //Display the recipe with orginal quantities 
+                Console.WriteLine("Recipe with Original Quantities:");
+            }
         }
     }
 }

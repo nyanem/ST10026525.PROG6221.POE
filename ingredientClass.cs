@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace ST10026525.POE.PART1
 {
-    internal class Recipe
+    internal class ingredientClass
     {
-        public class recipeClass
-        {
+       
             //Declaring Variebles
             public string Name { get; set; }
             public double Quantity { get; set; }
             public string Unit { get; set; }
-        }
-        public class stepsforRecipe
+
+        public ingredientClass(string name, double quantity, string unit)
         {
-           public string Description { get; set; }
-        }
-       
+            Name = name;
+            Quantity = quantity;
+            Unit = unit;
+        }     
     }
 }
