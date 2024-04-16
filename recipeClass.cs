@@ -9,17 +9,18 @@ namespace ST10026525.POE.PART1
 {
     internal class recipeClass
     {
-
+        // declaring variebles
         public string recipeName;
         public ingredientClass[] Ingredients { get; set; }
         public string[] Steps { get; set; }
-
+        // populating the varieble
         public recipeClass(string name, ingredientClass[] ingredients, string[] steps)
         {
             recipeName = name;
             Ingredients = ingredients;
             Steps = steps;
         }
+        //This method displays the recipe on the console
         public void displayRecipe()
         {
             Console.WriteLine("Recipe for: " + recipeName);
@@ -33,6 +34,7 @@ namespace ST10026525.POE.PART1
 
         }
 
+        // This methods calculates the scale factors 
         public void scaleCalculator(double factor)
         {
             foreach (var ingredient in Ingredients)

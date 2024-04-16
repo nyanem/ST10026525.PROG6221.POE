@@ -14,6 +14,7 @@ namespace ST10026525.POE.PART1
             public double Quantity { get; set; }
             public string Unit { get; set; }
 
+        // creating a method for the ingredients
         public ingredientClass(string name, double quantity, string unit)
         {
             ingredientName = name;

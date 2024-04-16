@@ -10,6 +10,7 @@ namespace ST10026525.POE.PART1
 {
     internal class RecipeBook
     {
+        //This method has been created for the input values
         public static recipeClass CreateNew()
         {
 
@@ -23,6 +24,7 @@ namespace ST10026525.POE.PART1
                 return null;
             }
 
+            //Input values are being stores in a array 
             ingredientClass[] ingredients = new ingredientClass[numIngredients];
             for (int i = 0; i < numIngredients; i++)
             {
@@ -42,6 +44,7 @@ namespace ST10026525.POE.PART1
 
                 ingredients[i] = new ingredientClass(ingredientName, quantity, unit);
             } 
+            
             Console.WriteLine("How many steps does this recipe have? ");
             int numSteps;
             if (!int.TryParse(Console.ReadLine(), out numSteps) || numSteps <= 0)
@@ -49,7 +52,7 @@ namespace ST10026525.POE.PART1
                 Console.WriteLine("Invalid input");
                 return null;
             }
-
+            //This arrays stores the steps for ingredients
             string[] steps = new string[numSteps];
             for (int i = 0; i < numSteps; i++) 
             { 
