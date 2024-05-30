@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/**/
 
 namespace ST10026525.POE.PART1
 {
     internal class recipeClass
     {
         // declaring variebles
-        public string recipeName;
+        public string recipeName { get; set; }
         public ingredientClass[] Ingredients { get; set; }
         public string[] Steps { get; set; }
         // populating the varieble
@@ -27,10 +28,13 @@ namespace ST10026525.POE.PART1
             Console.WriteLine("Ingredents:");
             foreach (var ingredient in Ingredients)
             {
-                Console.WriteLine(ingredient.Quantity.ToString(), ingredient.Unit.ToString() + "of" + ingredient.ingredientName.ToString());
+                Console.WriteLine($"{ingredient.Quantity} {ingredient.Unit} of  {ingredient.ingredientName}");
             }
             Console.WriteLine("Steps: ");
-            for (int i = 0; i < Steps.Length; i++) { Console.WriteLine($"{(i + 1)}: " + Steps[i]); }
+            for (int i = 0; i < Steps.Length; i++)
+            {
+                Console.WriteLine($"{(i + 1)}: " + Steps[i]);
+            }
 
         }
 

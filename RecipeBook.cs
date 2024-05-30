@@ -17,7 +17,7 @@ namespace ST10026525.POE.PART1
             Console.WriteLine("Enter the Name of your Recipe: ");
             string recipeName = Console.ReadLine();
 
-            Console.WriteLine("How many Ingriedents does this Receipe need?: ");
+            Console.WriteLine("How many Ingredients does this Receipe need?: ");
             int numIngredients;
             if (!int.TryParse(Console.ReadLine(), out numIngredients) || numIngredients <= 0) {
                 Console.WriteLine("Please enter a number for ingredients.");
