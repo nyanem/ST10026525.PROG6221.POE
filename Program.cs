@@ -31,13 +31,14 @@ namespace ST10026525.POE.PART1
             while (true)
             {
                 Console.WriteLine("Welcome to Sanele's Recipe book, what would you like to do?: ");
-                Console.WriteLine("Recipe Options:");
+                Console.WriteLine("\nRecipe Options:");
                 Console.WriteLine("1. Enter new Recipe");
                 Console.WriteLine("2. Display all Recipes");
-                Console.WriteLine("3. Select Recipe to scale");
-                Console.WriteLine("4. Reset Ingredients");
-                Console.WriteLine("5. Clear All Data");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("3. Which Recipe would you like to display?");
+                Console.WriteLine("4. Enter to scale selected recipe");
+                Console.WriteLine("5. Reset Ingredients od current recipe");
+                Console.WriteLine("6. Clear All Data");
+                Console.WriteLine("7. Exit");
 
                 string choice = Console.ReadLine();
 
@@ -120,7 +121,7 @@ namespace ST10026525.POE.PART1
                         }
                         break;
                     case "5":
-                        recipes.Clear();
+                        recipe.Clear();
                         selectedRecipe = null;
                         scaled = false;
                         Console.WriteLine("All data has been cleared.");
